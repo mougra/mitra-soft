@@ -14,13 +14,7 @@ function Comment({ comment }: CommentProps) {
     <>
       <Row>
         <Col xs={3} md={2}>
-          <Image
-            src={iconAvatar}
-            width='25px'
-            height='25px'
-            rounded
-            // className='mb-2'
-          />
+          <Image src={iconAvatar} width='25px' height='25px' rounded />
         </Col>
         <Col xs={9} md={10}>
           <h5 className=''>{comment.email}</h5>

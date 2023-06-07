@@ -3,12 +3,9 @@ import Post from '../components/Post'
 import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
 import { postsApi } from '../store/posts/posts.api'
-import { IPost, Size } from '../models/models'
-import Header from '../components/Header'
 import { Row } from 'reactstrap'
-// import Pagination from 'react-bootstrap/Pagination'
 import { PaginationControl } from 'react-bootstrap-pagination-control'
-import { useWindowSize } from '../hooks/resize'
+import Search from '../components/Search'
 
 function Posts() {
   useEffect(() => {
@@ -23,7 +20,11 @@ function Posts() {
     fethPosts({ page: page })
   }
 
+  const [sortPosts, { data: sortPostsData, isLoading: loadingComments }] =
+    postsApi.useLazySortPostsQuery()
+
   const [page, setPage] = useState(1)
+  const [isSorted, setIsSorted] = useState<boolean>(false)
 
   return (
     <>
@@ -35,11 +36,21 @@ function Posts() {
 
       <Container
         fluid='xl'
-        // expand={'xl'}
-        className='d-flex flex-wrap gap-4 justify-content-start '
+        className='d-flex flex-wrap gap-2 justify-content-start'
       >
+        <Search
+          page={page}
+          sortPosts={sortPosts}
+          isSorted={isSorted}
+          setIsSorted={setIsSorted}
+        />
         <Row className='align-items-stretch b-height '>
-          {posts && posts.map((post) => <Post key={post.id} post={post} />)}
+          {!isSorted &&
+            posts &&
+            posts.map((post) => <Post key={post.id} post={post} />)}
+          {isSorted &&
+            sortPostsData &&
+            sortPostsData.map((post) => <Post key={post.id} post={post} />)}
         </Row>
         <div className='mx-auto mb-5'>
           <PaginationControl

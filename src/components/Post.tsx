@@ -24,8 +24,6 @@ function Post({ post }: PostProps) {
     fethComments(id)
   }
 
-  console.log(comments)
-
   return (
     <>
       <Col className='col-lg-4 col-sm-6 col-12 card-group mb-4 '>
@@ -45,7 +43,6 @@ function Post({ post }: PostProps) {
               </Col>
             </Row>
             <Card.Text>{post.body}</Card.Text>
-            {/* <Button variant='primary'>Comments</Button> */}
             <Accordion flush className='border border-info'>
               <Accordion.Item
                 onClick={() => commentsHandler(post.id)}
@@ -54,7 +51,6 @@ function Post({ post }: PostProps) {
                 <Accordion.Header>Comments</Accordion.Header>
                 <Accordion.Body>
                   {loadingComments && <Spinner animation='border' />}
-
                   {comments &&
                     comments.map((comment) => (
                       <Comment key={comment.id} comment={comment} />

@@ -17,11 +17,23 @@ export const postsApi = createApi({
       query: (search: string) => ({
         url: 'posts',
         params: {
-          q: search,
-          per_page: 10,
+          _sort: 'title',
+          // per_page: 10,
         },
       }),
-      transformResponse: (response: ServerResponse<IPost>) => response.data,
+      // transformResponse: (response: ServerResponse<IPost>) => response.data,
+    }),
+    sortPosts: build.query<IPost[], Paginate>({
+      query: ({ page = 1, limit = 9 }) => ({
+        url: 'posts',
+        params: {
+          _sort: 'title',
+          // per_page: 10,
+          _page: page,
+          _limit: limit,
+        },
+      }),
+      // transformResponse: (response: ServerResponse<IPost>) => response.data,
     }),
     getPosts: build.query<IPost[], Paginate>({
       query: ({ page = 1, limit = 9 }) => ({
@@ -40,5 +52,9 @@ export const postsApi = createApi({
   }),
 })
 
-export const { useSearchPostsQuery, useLazyGetPostsQuery, useGetPostsQuery } =
-  postsApi
+export const {
+  useLazySearchPostsQuery,
+  useLazySortPostsQuery,
+  useLazyGetPostsQuery,
+  useGetPostsQuery,
+} = postsApi

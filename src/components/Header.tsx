@@ -1,22 +1,7 @@
 import React from 'react'
-
-// import {
-//   Container,
-//   Row,
-//   Col,
-//   Form,
-//   Input,
-//   Button,
-//   Navbar,
-//   Nav,
-//   NavbarBrand,
-//   NavLink,
-//   NavItem,
-//   UncontrolledDropdown,
-//   DropdownToggle,
-//   DropdownMenu,
-//   DropdownItem,
-// } from 'reactstrap'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
@@ -24,32 +9,54 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import myAvatar from '../assets/image/my-avatar.jpg'
+import headerLogo from '../assets/meteor-rain.gif'
 
 const AVATAR =
   'https://www.gravatar.com/avatar/429e504af19fc3e1cfa5c4326ef3394c?s=240&d=mm&r=pg'
 
 const Header = () => (
-  <header className='mb-5'>
-    <Navbar bg='light' expand={'lg'} className='mb-3'>
+  <header className='mb-4'>
+    <Navbar bg='white border-bottom border-dark' expand={'lg'} className='mb-3'>
       <Container fluid='xl'>
-        <Navbar.Brand href='#'>Navbar Offcanvas</Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar`} />
+        <Nav.Link className='fs-4' href='/'>
+          <Image src={headerLogo} width='70px' height='70px' rounded />
+        </Nav.Link>
+
+        <Navbar.Brand className='fs-3 mx-3' href='/'>
+          Hi there
+        </Navbar.Brand>
         <Navbar.Offcanvas
           id={`offcanvasNavbar`}
           aria-labelledby={`offcanvasNavbarLabel`}
           placement='start'
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel`}>
-              Offcanvas
-            </Offcanvas.Title>
+            <Row className='align-items-center flex-wrap'>
+              <Col className='mb-3'>
+                <Image src={myAvatar} width='100px' height='100px' rounded />
+              </Col>
+              <Col>
+                <Offcanvas.Title className='fs-3'>Egor</Offcanvas.Title>
+                <Offcanvas.Title className='fs-5 text-info'>
+                  <Nav.Link className='fs-4' href='mailto:mougraaa@gmail.com'>
+                    mougraaa@gmail.com
+                  </Nav.Link>
+                </Offcanvas.Title>
+              </Col>
+            </Row>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3'>
-              <Nav.Link href='#action1'>Home</Nav.Link>
-              <Nav.Link href='#action2'>Link</Nav.Link>
+              <Nav.Link className='fs-4' href='/'>
+                Posts
+              </Nav.Link>
+              <Nav.Link className='fs-4' href='/about-me'>
+                About me
+              </Nav.Link>
             </Nav>
-            <Form className='d-flex'>
+            {/* <Form className='d-flex'>
               <Form.Control
                 type='search'
                 placeholder='Search'
@@ -57,7 +64,7 @@ const Header = () => (
                 aria-label='Search'
               />
               <Button variant='outline-success'>Search</Button>
-            </Form>
+            </Form> */}
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
