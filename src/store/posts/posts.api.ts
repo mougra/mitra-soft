@@ -1,6 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IPost, ServerResponse } from '../../models/models'
 
+interface Paginate {
+  page?: number
+  limit?: number
+}
+
 export const postsApi = createApi({
   reducerPath: 'posts/api',
   baseQuery: fetchBaseQuery({
@@ -18,9 +23,14 @@ export const postsApi = createApi({
       }),
       transformResponse: (response: ServerResponse<IPost>) => response.data,
     }),
-    getPostsRepos: build.query<IPost[], string>({
-      query: () => ({
+    getPosts: build.query<IPost[], Paginate>({
+      query: ({ page = 1, limit = 9 }) => ({
         url: `posts`,
+        // ?_page=2&_limit=9
+        params: {
+          _page: page,
+          _limit: limit,
+        },
       }),
     }),
     // backend - changes data
@@ -30,4 +40,5 @@ export const postsApi = createApi({
   }),
 })
 
-export const { useSearchPostsQuery, useLazyGetPostsReposQuery } = postsApi
+export const { useSearchPostsQuery, useLazyGetPostsQuery, useGetPostsQuery } =
+  postsApi
