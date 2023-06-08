@@ -9,6 +9,7 @@ import { commentsApi } from '../store/comments/comments.api'
 import Comment from '../components/Comment'
 import Spinner from 'react-bootstrap/Spinner'
 import { IPost } from '../models/models'
+import { Nav } from 'react-bootstrap'
 
 interface PostProps {
   post: IPost
@@ -27,19 +28,22 @@ function Post({ post }: PostProps) {
       <Col className='col-lg-4 col-sm-6 col-12 card-group mb-4 '>
         <Card>
           <Card.Body>
-            <Row>
-              <Col xs={8} md={9}>
-                <Card.Title>{post.title}</Card.Title>
-              </Col>
-              <Col xs={4} md={3}>
-                <Image
-                  src={iconAvatar}
-                  width='64px'
-                  height='64px'
-                  roundedCircle
-                />
-              </Col>
-            </Row>
+            <Nav.Link href={`/detail-user/${post.id}`}>
+              <Row>
+                <Col xs={8} md={9}>
+                  <Card.Title>{post.title}</Card.Title>
+                </Col>
+                <Col xs={4} md={3}>
+                  <Image
+                    src={iconAvatar}
+                    width='64px'
+                    height='64px'
+                    roundedCircle
+                  />
+                </Col>
+              </Row>
+            </Nav.Link>
+
             <Card.Text>{post.body}</Card.Text>
             <Accordion flush className='border border-info'>
               <Accordion.Item

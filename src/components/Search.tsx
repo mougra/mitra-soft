@@ -28,6 +28,12 @@ function Search({
     setIsSorted((prev: any) => !prev)
   }
 
+  const changeInputHandler = (e: any) => {
+    if (e.code === 'Enter') {
+      e.preventDefault()
+    }
+  }
+
   return (
     <Container fluid='xl' className='d-flex justify-content-center px-0 w-100'>
       <Row className='d-flex flex-column flex-wrap justify-content-between w-100 flex-sm-row'>
@@ -40,6 +46,7 @@ function Search({
               aria-label='Search'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => changeInputHandler(e)}
             />
           </Form>
         </Col>

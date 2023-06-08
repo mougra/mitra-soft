@@ -11,6 +11,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import myAvatar from '../assets/image/my-avatar.jpg'
 import headerLogo from '../assets/meteor-rain.gif'
+import { Link } from 'react-router-dom'
 
 const AVATAR =
   'https://www.gravatar.com/avatar/429e504af19fc3e1cfa5c4326ef3394c?s=240&d=mm&r=pg'
@@ -20,11 +21,11 @@ const Header = () => (
     <Navbar bg='white border-bottom border-dark' expand={'lg'} className='mb-3'>
       <Container fluid='xl'>
         <Navbar.Toggle aria-controls={`offcanvasNavbar`} />
-        <Nav.Link className='fs-4' href='/'>
+        <Nav.Link className='fs-4' as={Link} to='/'>
           <Image src={headerLogo} width='70px' height='70px' rounded />
         </Nav.Link>
 
-        <Navbar.Brand className='fs-3 mx-3' href='/'>
+        <Navbar.Brand className='fs-3 mx-3' as={Link} to='/'>
           Hi there
         </Navbar.Brand>
         <Navbar.Offcanvas
@@ -49,10 +50,12 @@ const Header = () => (
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3'>
-              <Nav.Link className='fs-4' href='/'>
+              <Nav.Link className='fs-4' as={Link} to='/'>
+                {/* <Link to='/'></Link> */}
                 Posts
               </Nav.Link>
-              <Nav.Link className='fs-4' href='/about-me'>
+              <Nav.Link className='fs-4' as={Link} to='/about-me'>
+                {/* <Link to='/about-me'></Link> */}
                 About me
               </Nav.Link>
             </Nav>

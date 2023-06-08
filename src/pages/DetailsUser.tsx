@@ -1,13 +1,10 @@
 import React from 'react'
-import Header from '../components/HeaderOld'
 
 function DetailsUser() {
   return (
-    <div className='other'>
-      {' '}
-      <Header />
-      <div>adsdfdfsdf</div>
-    </div>
+    <>
+      <div>datails page</div>
+    </>
   )
 }
 

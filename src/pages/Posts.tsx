@@ -9,6 +9,7 @@ import Search from '../components/Search'
 import { useDebounce } from '../hooks/debounce'
 import { useActions } from '../hooks/actions'
 import { useAppSelector } from '../hooks/redux'
+import Header from '../components/Header'
 
 function Posts() {
   const { searchedPosts } = useAppSelector((state) => state.posts)
@@ -51,7 +52,7 @@ function Posts() {
     ? AllPosts.length / 9
     : 1
 
-  let searchedPostsPaginate = searchedPosts.slice(page - 1 * 9, 9)
+  // let searchedPostsPaginate = searchedPosts.slice(page - 1 * 9, 9)
 
   useEffect(() => {
     if (AllPosts && debounced) {
@@ -61,6 +62,7 @@ function Posts() {
 
   return (
     <>
+      <Header />
       {isLoading && isSortLoading && isLoadingAllPosts && (
         <div className='d-flex justify-content-center w-100 my-5'>
           <Spinner animation='border' />
@@ -99,7 +101,7 @@ function Posts() {
             </div>
           )}
         </Row>
-        <div className='mx-auto mb-5 w-100'>
+        <div className='mx-auto mb-5 d-flex justify-content-center'>
           <PaginationControl
             page={page}
             between={3}
