@@ -8,13 +8,10 @@ export const store = configureStore({
   reducer: {
     [postsApi.reducerPath]: postsApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
-    // posts: postsReducer,
+    posts: postsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(postsApi.middleware, commentsApi.middleware),
-  // githubApi.middleware,
 })
-
-// setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof store.getState>

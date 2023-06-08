@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IPost, ServerResponse } from '../../models/models'
 
-interface Paginate {
+interface Payload {
   page?: number
   limit?: number
+  search?: string
 }
 
 export const postsApi = createApi({
@@ -13,17 +14,19 @@ export const postsApi = createApi({
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
-    searchPosts: build.query<IPost[], string>({
-      query: (search: string) => ({
+    searchPosts: build.query<IPost[], Payload>({
+      query: ({ page = 1, limit = 9, search = '' }) => ({
         url: 'posts',
         params: {
-          _sort: 'title',
+          q: search,
           // per_page: 10,
+          _page: page,
+          _limit: limit,
         },
       }),
       // transformResponse: (response: ServerResponse<IPost>) => response.data,
     }),
-    sortPosts: build.query<IPost[], Paginate>({
+    sortPosts: build.query<IPost[], Payload>({
       query: ({ page = 1, limit = 9 }) => ({
         url: 'posts',
         params: {
@@ -35,7 +38,7 @@ export const postsApi = createApi({
       }),
       // transformResponse: (response: ServerResponse<IPost>) => response.data,
     }),
-    getPosts: build.query<IPost[], Paginate>({
+    getPosts: build.query<IPost[], Payload>({
       query: ({ page = 1, limit = 9 }) => ({
         url: `posts`,
         // ?_page=2&_limit=9

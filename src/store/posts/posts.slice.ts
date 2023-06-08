@@ -1,26 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-const LS_FAV_KEY = 'rfk'
+import { IPost } from '../../models/models'
 
 interface GithubState {
-  favourites: string[]
+  searchPosts: IPost[]
+}
+interface PayloadType {
+  data: IPost[]
+  search: string
 }
 
 const initialState: GithubState = {
-  favourites: JSON.parse(localStorage.getItem(LS_FAV_KEY) ?? '[]'),
+  searchPosts: [],
 }
 
 export const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    addFavourite(state, action: PayloadAction<string>) {
-      state.favourites.push(action.payload)
-      localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
-    },
-    removeFavourite(state, action: PayloadAction<string>) {
-      state.favourites = state.favourites.filter((f) => f !== action.payload)
-      localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
+    searchPosts(state, action: PayloadAction<PayloadType>) {
+      state.searchPosts = action.payload.data.filter((post: IPost) =>
+        post.title.includes(action.payload.search)
+      )
+      // выборка только по подгруженным постам
     },
   },
 })
