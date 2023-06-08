@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react'
-import { IComment, IPost } from '../models/models'
+import React from 'react'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
 import iconAvatar from '../assets/image/blackhole_96104.png'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Container } from 'reactstrap'
 import Accordion from 'react-bootstrap/Accordion'
 import { commentsApi } from '../store/comments/comments.api'
 import Comment from '../components/Comment'
 import Spinner from 'react-bootstrap/Spinner'
+import { IPost } from '../models/models'
 
 interface PostProps {
   post: IPost

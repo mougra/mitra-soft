@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { postsReducer } from './posts/posts.slice'
 import { postsApi } from './posts/posts.api'
 import { commentsApi } from './comments//comments.api'

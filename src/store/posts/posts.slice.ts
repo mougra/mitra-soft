@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IPost } from '../../models/models'
 
-interface GithubState {
-  searchPosts: IPost[]
+interface PostsState {
+  searchedPosts: IPost[]
 }
 interface PayloadType {
   data: IPost[]
   search: string
 }
 
-const initialState: GithubState = {
-  searchPosts: [],
+const initialState: PostsState = {
+  searchedPosts: [],
 }
 
 export const postsSlice = createSlice({
@@ -18,8 +18,8 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {
     searchPosts(state, action: PayloadAction<PayloadType>) {
-      state.searchPosts = action.payload.data.filter((post: IPost) =>
-        post.title.includes(action.payload.search)
+      state.searchedPosts = action.payload.data.filter((post: IPost) =>
+        post.title.includes(action.payload.search.toLowerCase())
       )
       // выборка только по подгруженным постам
     },

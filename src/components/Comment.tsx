@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { IComment } from '../models/models'
 import Image from 'react-bootstrap/Image'
 import iconAvatar from '../assets/image/2772505.png'

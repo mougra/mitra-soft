@@ -5,10 +5,6 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import { useLazySearchPostsQuery } from '../store/posts/posts.api'
-import { postsApi } from '../store/posts/posts.api'
-import { useDebounce } from '../hooks/debounce'
-import { useActions } from '../hooks/actions'
 
 interface SearchProps {
   page: number
@@ -27,11 +23,7 @@ function Search({
   search,
   setSearch,
 }: SearchProps) {
-  // const [searchPosts, { data: searchPostsData }] =
-  //   postsApi.useLazySearchPostsQuery()
-
   const SortHandler = (): void => {
-    console.log('SortHandler')
     sortPosts({ page: page })
     setIsSorted((prev: any) => !prev)
   }
@@ -54,10 +46,10 @@ function Search({
         <Col className='d-flex justify-content-end mb-3 px-0'>
           <Button
             className='px-4 align-self-start'
-            variant={isSorted ? 'outline-success' : 'outline-danger'}
+            variant={!isSorted ? 'outline-success' : 'outline-danger'}
             onClick={() => SortHandler()}
           >
-            Sort posts
+            {!isSorted ? 'Sort posts' : 'Unsort posts'}
           </Button>
         </Col>
       </Row>

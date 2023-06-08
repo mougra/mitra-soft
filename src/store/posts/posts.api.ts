@@ -4,7 +4,6 @@ import { IPost, ServerResponse } from '../../models/models'
 interface Payload {
   page?: number
   limit?: number
-  search?: string
 }
 
 export const postsApi = createApi({
@@ -12,31 +11,24 @@ export const postsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_BASE_URL,
   }),
-  refetchOnFocus: true,
   endpoints: (build) => ({
-    searchPosts: build.query<IPost[], Payload>({
-      query: ({ page = 1, limit = 9, search = '' }) => ({
+    fetchAllPosts: build.query<IPost[], string>({
+      query: () => ({
         url: 'posts',
-        params: {
-          q: search,
-          // per_page: 10,
-          _page: page,
-          _limit: limit,
-        },
       }),
-      // transformResponse: (response: ServerResponse<IPost>) => response.data,
+      // подгружаю все посты, что бы делать поиск по posts.title с информацией сколько всего записей для рабочей пагинации
+      // из плюсов поиск будет происходить без лишних запросов
+      // остальная логика остаётся как изначально было задуманно с подргузкой при переходе на конкретнубю страницу
     }),
     sortPosts: build.query<IPost[], Payload>({
       query: ({ page = 1, limit = 9 }) => ({
         url: 'posts',
         params: {
           _sort: 'title',
-          // per_page: 10,
           _page: page,
           _limit: limit,
         },
       }),
-      // transformResponse: (response: ServerResponse<IPost>) => response.data,
     }),
     getPosts: build.query<IPost[], Payload>({
       query: ({ page = 1, limit = 9 }) => ({
@@ -48,15 +40,11 @@ export const postsApi = createApi({
         },
       }),
     }),
-    // backend - changes data
-    // createUser: build.mutation<any, void>( {
-    //   query: () => ''
-    // })
   }),
 })
 
 export const {
-  useLazySearchPostsQuery,
+  useFetchAllPostsQuery,
   useLazySortPostsQuery,
   useLazyGetPostsQuery,
   useGetPostsQuery,
