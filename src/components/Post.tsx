@@ -10,12 +10,14 @@ import Comment from '../components/Comment'
 import Spinner from 'react-bootstrap/Spinner'
 import { IPost } from '../models/models'
 import { Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 interface PostProps {
   post: IPost
+  userPage?: boolean
 }
 
-function Post({ post }: PostProps) {
+function Post({ post, userPage = false }: PostProps) {
   const [fethComments, { data: comments, error, isLoading: loadingComments }] =
     commentsApi.useLazyGetCommentsQuery({})
 
@@ -25,10 +27,16 @@ function Post({ post }: PostProps) {
 
   return (
     <>
-      <Col className='col-lg-4 col-sm-6 col-12 card-group mb-4 '>
+      <Col
+        className={
+          userPage
+            ? 'col-xxl-4 col-xl-6 col-md-6 col-sm-12 col-12 card-group mb-4 '
+            : 'col-lg-4 col-sm-6 col-12 card-group mb-4 '
+        }
+      >
         <Card>
           <Card.Body>
-            <Nav.Link href={`/detail-user/${post.id}`}>
+            <Nav.Link as={Link} to={`/detail-user/${post.userId}`}>
               <Row>
                 <Col xs={8} md={9}>
                   <Card.Title>{post.title}</Card.Title>

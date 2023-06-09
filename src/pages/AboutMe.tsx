@@ -68,16 +68,24 @@ function AboutMe() {
             <a href='https://github.com/mougra'>https://github.com/mougra</a>
           </div>
           <Carousel className='w-75 mx-auto mb-4'>
-            <Carousel.Item interval={5000}>
-              <img className='d-block ' src={filter} alt='First slide' />
+            <Carousel.Item interval={3000}>
+              <img
+                src={filter}
+                alt='First slide'
+                className='d-block mx-auto'
+                height='372px'
+                width='600px'
+              />
               <Carousel.Caption>
                 <h3>First slide label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
+            <Carousel.Item interval={3000}>
               <img
-                className='d-block w-100'
+                className='d-block mx-auto'
+                height='372px'
+                width='600px'
                 src={rickandmorty}
                 alt='Second slide'
               />
@@ -86,8 +94,14 @@ function AboutMe() {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
-              <img className='d-block w-100' src={calendar} alt='Third slide' />
+            <Carousel.Item interval={3000}>
+              <img
+                className='d-block mx-auto'
+                height='372px'
+                width='600px'
+                src={calendar}
+                alt='Third slide'
+              />
               <Carousel.Caption>
                 <h3>Third slide label</h3>
                 <p>
@@ -96,11 +110,23 @@ function AboutMe() {
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
-              <img className='d-block w-100' src={piano} alt='Third slide' />
+            <Carousel.Item interval={3000}>
+              <img
+                className='d-block mx-auto'
+                height='372px'
+                width='600px'
+                src={piano}
+                alt='Fourth slide'
+              />
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
-              <img className='d-block w-100' src={table} alt='Third slide' />
+            <Carousel.Item interval={3000}>
+              <img
+                className='d-block mx-auto'
+                height='372px'
+                width='600px'
+                src={table}
+                alt='Fived slide'
+              />
             </Carousel.Item>
           </Carousel>
         </div>

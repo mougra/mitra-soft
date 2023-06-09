@@ -63,6 +63,11 @@ function Posts() {
   return (
     <>
       <Header />
+      {error && (
+        <p className='d-flex justify-content-center w-100 my-5'>
+          Something went wrong ...
+        </p>
+      )}
       {isLoading && isSortLoading && isLoadingAllPosts && (
         <div className='d-flex justify-content-center w-100 my-5'>
           <Spinner animation='border' />

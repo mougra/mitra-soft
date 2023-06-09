@@ -40,6 +40,14 @@ export const postsApi = createApi({
         },
       }),
     }),
+    getUserPosts: build.query<IPost[], number>({
+      query: (postId) => ({
+        url: `posts`,
+        params: {
+          userId: postId,
+        },
+      }),
+    }),
   }),
 })
 
@@ -48,4 +56,5 @@ export const {
   useLazySortPostsQuery,
   useLazyGetPostsQuery,
   useGetPostsQuery,
+  useGetUserPostsQuery,
 } = postsApi

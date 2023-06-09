@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IComment, IPost, ServerResponse } from '../../models/models'
+import { IComment } from '../../models/models'
 
 export const commentsApi = createApi({
   reducerPath: 'comments/api',
@@ -11,7 +11,6 @@ export const commentsApi = createApi({
     getComments: build.query<IComment[], number>({
       query: (postId) => ({
         url: `comments`,
-        // ?_page=2&_limit=9
         params: {
           postId: postId,
         },
