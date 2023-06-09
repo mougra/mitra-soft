@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Posts />} />
+        <Route path='/mitra-soft' element={<Posts />} />
         <Route path='/about-me' element={<AboutMe />} />
         <Route path='/detail-user/:id' element={<DetailsUser />} />
         <Route path='/*' element={<NotFound />} />

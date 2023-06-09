@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import myAvatar from '../assets/image/my-avatar.jpg'
 import headerLogo from '../assets/meteor-rain.gif'
@@ -21,11 +20,11 @@ const Header = () => (
     <Navbar bg='white border-bottom border-dark' expand={'lg'} className='mb-3'>
       <Container fluid='xl'>
         <Navbar.Toggle aria-controls={`offcanvasNavbar`} />
-        <Nav.Link className='fs-4' as={Link} to='/'>
+        <Nav.Link className='fs-4' as={Link} to='/mitra-soft'>
           <Image src={headerLogo} width='70px' height='70px' rounded />
         </Nav.Link>
 
-        <Navbar.Brand className='fs-3 mx-3' as={Link} to='/'>
+        <Navbar.Brand className='fs-3 mx-3' as={Link} to='/mitra-soft'>
           Hi there
         </Navbar.Brand>
         <Navbar.Offcanvas
@@ -50,12 +49,10 @@ const Header = () => (
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3'>
-              <Nav.Link className='fs-4' as={Link} to='/'>
-                {/* <Link to='/'></Link> */}
+              <Nav.Link className='fs-4' as={Link} to='/mitra-soft'>
                 Posts
               </Nav.Link>
               <Nav.Link className='fs-4' as={Link} to='/about-me'>
-                {/* <Link to='/about-me'></Link> */}
                 About me
               </Nav.Link>
             </Nav>
