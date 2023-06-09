@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/mitra-soft/static/css/main.4da62354.css",
+    "main.js": "/mitra-soft/static/js/main.d360a9fc.js",
+    "static/media/meteor-rain.gif": "/mitra-soft/static/media/meteor-rain.6c1efee1b81f2819ac2c.gif",
+    "static/media/cv-photo.png": "/mitra-soft/static/media/cv-photo.1cdb1beb4e7886a6a344.png",
+    "static/media/rickandmorty.png": "/mitra-soft/static/media/rickandmorty.2c78ea90eda28d0e08f8.png",
+    "static/media/my-avatar.jpg": "/mitra-soft/static/media/my-avatar.4c052729bfd5ede4698c.jpg",
+    "static/media/piano.png": "/mitra-soft/static/media/piano.872d8f1ac8e8db9b90e3.png",
+    "static/media/blackhole_96104.png": "/mitra-soft/static/media/blackhole_96104.2d341f110da6c356e5fd.png",
+    "static/media/table.png": "/mitra-soft/static/media/table.def53046bdb9b71734be.png",
+    "static/media/2772505.png": "/mitra-soft/static/media/2772505.4bdc622923042edc4823.png",
+    "static/media/2636225.png": "/mitra-soft/static/media/2636225.f3715e68866a5c65fb3c.png",
+    "static/media/calendar.png": "/mitra-soft/static/media/calendar.60965a456e21ee9441b2.png",
+    "index.html": "/mitra-soft/index.html",
+    "main.4da62354.css.map": "/mitra-soft/static/css/main.4da62354.css.map",
+    "main.d360a9fc.js.map": "/mitra-soft/static/js/main.d360a9fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4da62354.css",
+    "static/js/main.d360a9fc.js"
+  ]
+}
